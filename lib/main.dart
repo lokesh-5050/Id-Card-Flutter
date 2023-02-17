@@ -23,6 +23,37 @@ class _HomeState extends State<Home> {
     Quote(text: "What we think, we become." , author: "Buddha"),
   ];
 
+  Widget quotesTemplate(quote){
+    return Card(
+      
+      margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              quote.text,
+              style: TextStyle(
+                color: Colors.grey[500],
+                fontSize: 20.0
+              ),
+            ),
+            SizedBox(height: 6.0),
+
+            Text(
+              quote.author,
+              style: TextStyle(
+                color: Colors.grey[800],
+                fontSize: 14.0
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,9 +65,9 @@ class _HomeState extends State<Home> {
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: quotes
-            .map((q) => Text("${q.text} -- ${q.author}", style: TextStyle(color: Colors.white)))
-            .toList(),
+            .map((q) => quotesTemplate(q)).toList(),
       ),
       // body: Padding(
 
