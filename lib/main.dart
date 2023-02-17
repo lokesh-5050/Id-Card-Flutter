@@ -42,8 +42,13 @@ class _HomeState extends State<Home> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: quotes
             .map((q) => QuoteCard(
-                  quote: q,
-                ))
+                quote: q,
+                delete: () {
+                  setState(() {
+                    print("in setstae");
+                    quotes.remove(q);
+                  });
+                }))
             .toList(),
       ),
       // body: Padding(
