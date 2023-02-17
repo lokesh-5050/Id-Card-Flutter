@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'quote.dart';
+import 'quote_cards.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -17,42 +18,15 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int level = 0;
   List<Quote> quotes = [
-    Quote(text: "Never regret anything that made you smile." , author: "Mark Twain"),
-    Quote(text: "All limitations are self-imposed." , author: "Oliver Wendell Holmes"),
-    Quote(text: "Life is like riding a bicycle.." , author:  "Albert Einstein"),
-    Quote(text: "What we think, we become." , author: "Buddha"),
+    Quote(
+        text: "Never regret anything that made you smile.",
+        author: "Mark Twain"),
+    Quote(
+        text: "All limitations are self-imposed.",
+        author: "Oliver Wendell Holmes"),
+    Quote(text: "Life is like riding a bicycle..", author: "Albert Einstein"),
+    Quote(text: "What we think, we become.", author: "Buddha"),
   ];
-
-  Widget quotesTemplate(quote){
-    return Card(
-      
-      margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              quote.text,
-              style: TextStyle(
-                color: Colors.grey[500],
-                fontSize: 20.0
-              ),
-            ),
-            SizedBox(height: 6.0),
-
-            Text(
-              quote.author,
-              style: TextStyle(
-                color: Colors.grey[800],
-                fontSize: 14.0
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +41,10 @@ class _HomeState extends State<Home> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: quotes
-            .map((q) => quotesTemplate(q)).toList(),
+            .map((q) => QuoteCard(
+                  quote: q,
+                ))
+            .toList(),
       ),
       // body: Padding(
 
@@ -150,7 +127,6 @@ class _HomeState extends State<Home> {
       //           )
       //         ],
       //       ),
-
       //     ],
       //   ),
       // ),
