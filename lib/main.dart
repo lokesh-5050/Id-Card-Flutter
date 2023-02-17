@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'quote.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -16,13 +16,11 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int level = 0;
-  List<String> quotes = [
-    "Whatever you are, be a good one.",
-    "Be yourself; everyone else is already taken.",
-    "Limit your always and your nevers.",
-    "Sometimes you will never know the value of a moment, until it becomes a memory.",
-    "Every accomplishment starts with the decision to try.",
-    "Never regret anything that made you smile.",
+  List<Quote> quotes = [
+    Quote(text: "Never regret anything that made you smile." , author: "Mark Twain"),
+    Quote(text: "All limitations are self-imposed." , author: "Oliver Wendell Holmes"),
+    Quote(text: "Life is like riding a bicycle.." , author:  "Albert Einstein"),
+    Quote(text: "What we think, we become." , author: "Buddha"),
   ];
 
   @override
@@ -36,7 +34,9 @@ class _HomeState extends State<Home> {
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
-        children: quotes.map((q)=> Text(q , style: TextStyle(color: Colors.white) )).toList(),
+        children: quotes
+            .map((q) => Text("${q.text} -- ${q.author}", style: TextStyle(color: Colors.white)))
+            .toList(),
       ),
       // body: Padding(
 
@@ -121,9 +121,7 @@ class _HomeState extends State<Home> {
       //       ),
 
       //     ],
-
       //   ),
-
       // ),
 
       floatingActionButton: FloatingActionButton(
